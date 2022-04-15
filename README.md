@@ -73,6 +73,6 @@ I used Refs to check which li tag gets clicked on.
 
 ## 4. TODO
 
-1. Overall, to make this autocomplete more generic by tweaking the search function
+1. Overall, I would have worked on making this autocomplete more generic and reusable by tweaking the search function
 2. Search function could be split in more pieces (the regex could be out for example)
-3. Cut the jsx into components: The ul, li, input
+3. Cut the jsx into components: The ul, li, input + not have all css in one file
