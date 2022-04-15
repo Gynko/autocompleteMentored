@@ -1,10 +1,13 @@
 import "./autocomplete.styles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { countries } from "../data/countryList.js";
 
 function Autocomplete() {
   const [typed, setTyped] = useState("");
   const [results, setResults] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("");
+
+  let refArray = useRef([]);
 
   function onEnteringInput(event) {
     setTyped(event.target.value);
@@ -34,13 +37,31 @@ function Autocomplete() {
     }
   }
 
+  function addToRefs(el) {
+    if (el && !refArray.current.includes(el)) {
+      refArray.current.push(el);
+    }
+  }
+
+  function onClickCountries(index) {
+    setSelectedCountry(refArray.current[index].innerText);
+    setResults([]);
+  }
+
   function renderResults() {
+    refArray.current = [];
     if (results.length > 0)
       return (
         <ul className="autocomplete-list">
           {results.length > 0
             ? results.map((entries, index) => (
-                <li key={`${index}${entries}`}>{entries}</li>
+                <li
+                  ref={addToRefs}
+                  onClick={() => onClickCountries(index)}
+                  key={`${index}${entries}`}
+                >
+                  {entries}
+                </li>
               ))
             : null}
         </ul>
@@ -49,18 +70,25 @@ function Autocomplete() {
   }
 
   return (
-    <form autoComplete="off" id="countryForm">
-      <div className="autocomplete">
-        <input
-          type="text"
-          className="autocomplete-input"
-          placeholder="Country"
-          onChange={onEnteringInput}
-        />
-        <div className="autocomplete-items">{renderResults()}</div>
-      </div>
-      <input type="submit" />
-    </form>
+    <div className="maincontainer">
+      <form autoComplete="off" id="countryForm">
+        <div className="autocomplete">
+          <input
+            type="text"
+            className="autocomplete-input"
+            placeholder="Country"
+            onChange={onEnteringInput}
+          />
+          <div className="autocomplete-items">{renderResults()}</div>
+        </div>
+        <input type="submit" />
+      </form>
+      <p className="country">
+        {selectedCountry === ""
+          ? "Nothing selected"
+          : `Your favourite country is: ${selectedCountry}`}
+      </p>
+    </div>
   );
 }
 
