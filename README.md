@@ -9,6 +9,8 @@
   - [3.2. Analyzing the countries list data structure:](#32-analyzing-the-countries-list-data-structure)
   - [3.3. Search algorithm: the right data structure?](#33-search-algorithm-the-right-data-structure)
   - [3.4. Creating the search algorithm](#34-creating-the-search-algorithm)
+  - [3.5. Allowing to select an item](#35-allowing-to-select-an-item)
+- [4. TODO](#4-todo)
 
 ## 1. Installing and starting server
 
@@ -64,3 +66,13 @@ Since our array elements are "ordered", I am looking at an algorithm that is not
 I need to check if my input matches the array's entry: seemingly no methods available to do that for strings (.includes searches for all matches within the word => if i type "a" I get all countries containing an "a"
 
 => regular expressions to the rescue!
+
+### 3.5. Allowing to select an item
+
+I used Refs to check which li tag gets clicked on.
+
+## 4. TODO
+
+1. Overall, to make this autocomplete more generic by tweaking the search function
+2. Search function could be split in more pieces (the regex could be out for example)
+3. Cut the jsx into components: The ul, li, input
