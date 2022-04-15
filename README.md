@@ -39,9 +39,9 @@ I am going to approach this problem exactly as I would if it had been given to m
 
 > If we were in a real setting, there is a question that I would ask my lead: my assignment is to create an autocomplete based on the input's ordered letters (If i type "Gre", I will need to return starting with "Gre": Greece, Greenland, Grenada).
 
-But a user typing "South" - as I would myself type it to get "South Korea"- would not get "Korea, South" result, which may not be a good Ux.
+> But a user typing "South" - as I would myself type it to get "South Korea"- would not get "Korea, South" result, which may not be a good Ux.
 
-For the sake of the exercice I will just assume that lead said to stick to ordered letters.
+> For the sake of the exercice I will just assume that lead said to stick to ordered letters.
 
 ### 3.3. Search algorithm
 
