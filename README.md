@@ -37,7 +37,7 @@ I am going to approach this problem exactly as I would if it had been given to m
 2.  There is a possible typo: a missing Capital letter on afghanistan => code should take that into account?
 3.  There are commas on some entries (Korea, North) that may or may not be an issue.
 
-If we were in a real setting, there is a question that I would ask my lead: my assignment is to create an autocomplete based on the input's ordered letters (If i type "Gre", I will need to return starting with "Gre": Greece, Greenland, Grenada).
+> If we were in a real setting, there is a question that I would ask my lead: my assignment is to create an autocomplete based on the input's ordered letters (If i type "Gre", I will need to return starting with "Gre": Greece, Greenland, Grenada).
 
 But a user typing "South" - as I would myself type it to get "South Korea"- would not get "Korea, South" result, which may not be a good Ux.
 
