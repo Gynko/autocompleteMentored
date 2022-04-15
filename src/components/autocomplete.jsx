@@ -1,34 +1,45 @@
 import "./autocomplete.styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { countries } from "../data/countryList.js";
 
 function Autocomplete() {
-  const [inputed, setInputed] = useState("");
+  const [typed, setTyped] = useState("");
+  const [results, setResults] = useState([]);
 
   function onEnteringInput(event) {
-    setInputed(event.target.value);
-    search(event.target.value);
+    setTyped(event.target.value);
   }
+
+  useEffect(() => {
+    console.log("typed", typed);
+    if (typed !== "") search(typed);
+  }, [typed]);
 
   // If first input is G, get all elements of array starting with G
   // step2: first 2 letters
   function search(input) {
-    var results = countries.filter((element) => element.includes(input));
-    console.log(results);
+    var regexLiteral = new RegExp(`^${input.toLowerCase()}`);
+    var results = countries.filter((element) =>
+      regexLiteral.test(element.toLowerCase())
+    );
+    setResults(results);
+    console.log("results", input, results);
   }
 
   return (
-    <form autocomplete="off" id="countryForm">
-      <div class="autocomplete">
+    <form autoComplete="off" id="countryForm">
+      <div className="autocomplete">
         <input
           type="text"
-          class="autocomplete-input"
+          className="autocomplete-input"
           placeholder="Country"
           onChange={onEnteringInput}
         />
-        <div class="autocomplete-items">
-          <ul class="autocomplete-list">
-            <li>{inputed}</li>
+        <div className="autocomplete-items">
+          <ul className="autocomplete-list">
+            {results.length > 0
+              ? results.map((entries, index) => <li key={index}>{entries}</li>)
+              : null}
           </ul>
         </div>
       </div>

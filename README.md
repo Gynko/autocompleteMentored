@@ -60,3 +60,7 @@ Since our array elements are "ordered", I am looking at an algorithm that is not
 => If the first letter that I type is a "D", I need to be able to stop the algorithm a soon as it reaches an entry where the first letter is "E".
 
 > Note: it occurs to me that I don't know from the top of my head all the methods available for arrays, and their synthaxes: will that be problematic in a live interview? Would it be ok for me to have Cheat sheets?
+
+I need to check if my input matches the array's entry: seemingly no methods available to do that for strings (.includes searches for all matches within the word => if i type "a" I get all countries containing an "a"
+
+=> regular expressions to the rescue!
