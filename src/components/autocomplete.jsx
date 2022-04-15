@@ -11,10 +11,9 @@ function Autocomplete() {
   }
 
   // If first input is G, get all elements of array starting with G
-  function search(firstLetter) {
-    var results = countries.filter(
-      (element) => element[0].toLowerCase() === firstLetter.toLowerCase()
-    );
+  // step2: first 2 letters
+  function search(input) {
+    var results = countries.filter((element) => element.includes(input));
     console.log(results);
   }
 
