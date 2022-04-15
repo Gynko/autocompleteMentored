@@ -7,7 +7,8 @@
 - [3. How I approached the problem](#3-how-i-approached-the-problem)
   - [3.1. Setting up some basics](#31-setting-up-some-basics)
   - [3.2. Analyzing the countries list data structure:](#32-analyzing-the-countries-list-data-structure)
-  - [3.3. Search algorithm](#33-search-algorithm)
+  - [3.3. Search algorithm: the right data structure?](#33-search-algorithm-the-right-data-structure)
+  - [3.4. Creating the search algorithm](#34-creating-the-search-algorithm)
 
 ## 1. Installing and starting server
 
@@ -36,6 +37,7 @@ I am going to approach this problem exactly as I would if it had been given to m
 1.  Countries are sorted alphabetically. Influences the algorithm search.
 2.  There is a possible typo: a missing Capital letter on afghanistan => code should take that into account?
 3.  There are commas on some entries (Korea, North) that may or may not be an issue.
+4.  There are no special characters like £, é
 
 > If we were in a real setting, there is a question that I would ask my lead: my assignment is to create an autocomplete based on the input's ordered letters (If i type "Gre", I will need to return starting with "Gre": Greece, Greenland, Grenada).
 
@@ -43,6 +45,16 @@ I am going to approach this problem exactly as I would if it had been given to m
 
 > For the sake of the exercice I will just assume that lead said to stick to ordered letters.
 
-### 3.3. Search algorithm
+### 3.3. Search algorithm: the right data structure?
 
-My first reflex would be to wonder if the data structure that I am supposed to use is the best one for the job.
+1. My first reflex would be to wonder if the data structure that I am supposed to use is the best one for the job.
+
+When I type my first letter, I am going to have to traverse the whole array until the first element starting with this letter, which could well be a O(n) operation if the first letter is "Z".
+
+> For the sake of the exercice, I will assume that I am supposed to use an array and keep it as it is.
+
+### 3.4. Creating the search algorithm
+
+Since our array is ordered, I am looking at an algorithm that is not going to traverse the whole array, like filter.
+
+=> If the first letter that I type is a "D", I need to be able to stop the algorithm a soon as it reaches an entry where the first letter is "E".
