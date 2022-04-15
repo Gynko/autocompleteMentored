@@ -76,3 +76,4 @@ I used Refs to check which li tag gets clicked on.
 1. Overall, I would have worked on making this autocomplete more generic and reusable by tweaking the search function
 2. Search function could be split in more pieces (the regex could be out for example)
 3. Cut the jsx into components: The ul, li, input + not have all css in one file
+4. Clearing the input field after choosing a country

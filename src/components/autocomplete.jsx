@@ -7,7 +7,7 @@ function Autocomplete() {
   const [results, setResults] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
 
-  let refArray = useRef([]);
+  let refArrayCountries = useRef([]);
 
   function onEnteringInput(event) {
     setTyped(event.target.value);
@@ -38,18 +38,18 @@ function Autocomplete() {
   }
 
   function addToRefs(el) {
-    if (el && !refArray.current.includes(el)) {
-      refArray.current.push(el);
+    if (el && !refArrayCountries.current.includes(el)) {
+      refArrayCountries.current.push(el);
     }
   }
 
   function onClickCountries(index) {
-    setSelectedCountry(refArray.current[index].innerText);
+    setSelectedCountry(refArrayCountries.current[index].innerText);
     setResults([]);
   }
 
   function renderResults() {
-    refArray.current = [];
+    refArrayCountries.current = [];
     if (results.length > 0)
       return (
         <ul className="autocomplete-list">
