@@ -1,7 +1,6 @@
 import "./autocomplete.styles.css";
 import { useEffect, useState } from "react";
 import { countries } from "../data/countryList.js";
-import { render } from "@testing-library/react";
 
 function Autocomplete() {
   const [typed, setTyped] = useState("");
@@ -14,7 +13,7 @@ function Autocomplete() {
   useEffect(() => {
     if (typed !== "") search(typed);
     else if (typed === "") setResults([]);
-  }, [typed]);
+  }, [typed, results]);
 
   // If first input is G, get all elements of array starting with G
   // step2: first 2 letters
@@ -24,7 +23,6 @@ function Autocomplete() {
       regexLiteral.test(element.toLowerCase())
     );
     setResults(matches);
-    if (input !== "") renderResults();
   }
 
   function renderResults() {
