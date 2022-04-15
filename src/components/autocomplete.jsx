@@ -7,10 +7,16 @@ function Autocomplete() {
 
   function onEnteringInput(event) {
     setInputed(event.target.value);
-    console.log(countries);
+    search(event.target.value);
   }
 
-  function SearchArray() {}
+  // If first input is G, get all elements of array starting with G
+  function search(firstLetter) {
+    var results = countries.filter(
+      (element) => element[0].toLowerCase() === firstLetter.toLowerCase()
+    );
+    console.log(results);
+  }
 
   return (
     <form autocomplete="off" id="countryForm">

@@ -51,10 +51,12 @@ I am going to approach this problem exactly as I would if it had been given to m
 
 When I type my first letter, I am going to have to traverse the whole array until the first element starting with this letter, which could well be a O(n) operation if the first letter is "Z".
 
-> For the sake of the exercice, I will assume that I am supposed to use an array and keep it as it is. Truth is, I feel the need to go again through my data structure and algorithm course ^^.
+> For the sake of the exercice, I will assume that I am supposed to use an array and keep it as it is. Truth is, I feel the need to go again through my data structure and algorithm course but won't have time to do so in a timely manner.
 
 ### 3.4. Creating the search algorithm
 
-Since our arraye elements are "ordered", I am looking at an algorithm that is not going to traverse the whole array.
+Since our array elements are "ordered", I am looking at an algorithm that is not going to traverse the whole array.
 
 => If the first letter that I type is a "D", I need to be able to stop the algorithm a soon as it reaches an entry where the first letter is "E".
+
+> Note: it occurs to me that I don't know from the top of my head all the methods available for arrays, and their synthaxes: will that be problematic in a live interview?
