@@ -13,16 +13,25 @@ function Autocomplete() {
   useEffect(() => {
     if (typed !== "") search(typed);
     else if (typed === "") setResults([]);
-  }, [typed, results]);
+  }, [typed]);
 
-  // If first input is G, get all elements of array starting with G
-  // step2: first 2 letters
   function search(input) {
     var regexLiteral = new RegExp(`^${input.toLowerCase()}`);
-    var matches = countries.filter((element) =>
-      regexLiteral.test(element.toLowerCase())
-    );
-    setResults(matches);
+    var matches = [];
+    var gotFirstMatch = false;
+    // Looping until getting a match
+    for (let i = 0; i < countries.length; i++) {
+      if (regexLiteral.test(countries[i].toLowerCase()) === true) {
+        matches.push(countries[i]);
+        gotFirstMatch = true;
+      } else if (
+        regexLiteral.test(countries[i].toLowerCase()) === false &&
+        gotFirstMatch === true
+      ) {
+        setResults(matches);
+        return;
+      }
+    }
   }
 
   function renderResults() {
@@ -30,7 +39,9 @@ function Autocomplete() {
       return (
         <ul className="autocomplete-list">
           {results.length > 0
-            ? results.map((entries, index) => <li key={index}>{entries}</li>)
+            ? results.map((entries, index) => (
+                <li key={`${index}${entries}`}>{entries}</li>
+              ))
             : null}
         </ul>
       );
